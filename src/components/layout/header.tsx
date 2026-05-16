@@ -6,6 +6,7 @@ import { siteConfig } from "@/config/site";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
 import { LangSwitcher } from "./lang-switcher";
+import { MobileNav } from "./mobile-nav";
 
 /**
  * Top header with branding, nav, and language switcher.
@@ -31,7 +32,7 @@ export function Header() {
           />
         </Link>
 
-        {/* Primary nav — hidden on small screens, full mobile menu comes in Phase 2 */}
+        {/* Desktop nav — hidden on mobile */}
         <nav aria-label="Primary" className="hidden md:block">
           <ul className="flex items-center gap-1">
             {navItems.map((item) => (
@@ -51,8 +52,13 @@ export function Header() {
           </ul>
         </nav>
 
-        {/* Lang switcher */}
-        <LangSwitcher />
+        {/* Desktop lang switcher — hidden on mobile (lives inside the drawer there) */}
+        <div className="hidden md:block">
+          <LangSwitcher />
+        </div>
+
+        {/* Mobile hamburger + drawer */}
+        <MobileNav />
       </Container>
     </header>
   );

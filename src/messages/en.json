@@ -27,6 +27,11 @@
     "label": "Language",
     "switchTo": "Switch language"
   },
+  "MobileNav": {
+    "open": "Open menu",
+    "close": "Close menu",
+    "title": "Menu"
+  },
   "NotFound": {
     "title": "Page not found",
     "description": "This page doesn't exist yet — or it took the day off.",
