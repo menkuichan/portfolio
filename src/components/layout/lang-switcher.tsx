@@ -1,19 +1,28 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname as useNextPathname } from "next/navigation";
 import { useTransition } from "react";
-import { defaultLocale, locales, localeLabels, type Locale } from "@/i18n/config";
+import { locales, localeLabels, type Locale } from "@/i18n/config";
+import { useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
 
 /**
  * LangSwitcher — switches locale while preserving the current path.
  *
- * Uses Next.js's native router and pathname (NOT next-intl's wrapped
- * versions) to avoid edge-cases where next-intl's `as-needed` strategy
- * occasionally returns a still-prefixed pathname during client-side
- * transitions. We strip and re-attach the locale prefix manually here —
- * one source of truth, one tested place.
+ * Strategy (canonical, no hacks):
+ * - `usePathname()` from `next/navigation` returns the raw browser
+ *   path (e.g. "/pt/about"). We strip the locale prefix ourselves so
+ *   we know exactly what we're navigating to — no reliance on next-intl's
+ *   `usePathname` quirks during client-side transitions.
+ * - `useRouter()` from `@/i18n/navigation` is next-intl's router. We pass
+ *   it the stripped path plus the target `{ locale }`. It handles:
+ *     * applying the correct prefix for the target locale
+ *     * writing the NEXT_LOCALE cookie (so refreshes remember the choice)
+ *     * keeping App Router state in sync
+ *
+ * Locale detection from cookies is disabled in `routing.ts`, so this
+ * switch is reliably one-way: URL → locale, period.
  */
 
 function stripLocalePrefix(pathname: string): string {
@@ -26,29 +35,20 @@ function stripLocalePrefix(pathname: string): string {
   return pathname;
 }
 
-function buildTargetPath(pathname: string, targetLocale: Locale): string {
-  const cleanPath = stripLocalePrefix(pathname);
-  if (targetLocale === defaultLocale) {
-    return cleanPath;
-  }
-  // For non-default locales, prefix the path. Treat "/" specially so we
-  // don't end up with "/ru/" (trailing slash).
-  return cleanPath === "/" ? `/${targetLocale}` : `/${targetLocale}${cleanPath}`;
-}
-
 export function LangSwitcher({ className }: { className?: string }) {
   const t = useTranslations("LangSwitcher");
   const router = useRouter();
-  const pathname = usePathname();
+  const rawPathname = useNextPathname();
   const currentLocale = useLocale() as Locale;
   const [isPending, startTransition] = useTransition();
 
   function handleChange(event: React.ChangeEvent<HTMLSelectElement>) {
     const nextLocale = event.target.value as Locale;
     if (nextLocale === currentLocale) return;
-    const target = buildTargetPath(pathname, nextLocale);
+
+    const cleanPath = stripLocalePrefix(rawPathname);
     startTransition(() => {
-      router.replace(target);
+      router.replace(cleanPath, { locale: nextLocale });
     });
   }
 
