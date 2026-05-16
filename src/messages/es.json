@@ -16,7 +16,8 @@
     "headline": "Construyo tiendas Shopify que no parecen Shopify.",
     "subhead": "Temas Liquid personalizados y tiendas headless en Hydrogen para marcas DTC. Más de 6 años en producción, trabajando sola de principio a fin.",
     "ctaPrimary": "Reservar una llamada",
-    "ctaSecondary": "Leer el blog"
+    "ctaSecondary": "Leer el blog",
+    "scrollHint": "sigue bajando"
   },
   "Footer": {
     "tagline": "Hecho con cuidado en Next.js, TypeScript y Tailwind.",
@@ -74,5 +75,46 @@
     "subtitle": "Acepto un número limitado de nuevos proyectos — temas personalizados, migraciones headless y colaboraciones de desarrollo continuas.",
     "ctaPrimary": "Reservar una llamada",
     "ctaSecondary": "Enviar email"
+  },
+  "Contact": {
+    "page": {
+      "metaTitle": "Contacto",
+      "eyebrow": "Contacto",
+      "title": "Hablemos de tu proyecto Shopify",
+      "subhead": "Reserva una llamada de 30 minutos abajo o envíame un email. Suelo responder en un día laborable."
+    },
+    "scheduleHeading": "Elige un horario",
+    "loadingCalendar": "Cargando el calendario...",
+    "otherWays": {
+      "heading": "Otras formas de contacto",
+      "email": "Email",
+      "emailValue": "{email}",
+      "linkedin": "LinkedIn",
+      "linkedinValue": "Conectar en LinkedIn",
+      "github": "GitHub",
+      "githubValue": "Ver mi código",
+      "responseTime": "Suelo responder en 24 horas en días laborables."
+    }
+  },
+  "About": {
+    "page": {
+      "metaTitle": "Sobre mí",
+      "eyebrow": "Sobre mí",
+      "title": "Del frontend a la obsesión por Shopify",
+      "subhead": "Seis años en producción, quince proyectos lanzados, un foco creciente en e-commerce."
+    },
+    "downloadCv": "Descargar CV (PDF)",
+    "journey": {
+      "eyebrow": "Trayectoria",
+      "title": "Seis años, en breve"
+    },
+    "values": {
+      "eyebrow": "Cómo trabajo",
+      "title": "Cuatro cosas que no negocio"
+    },
+    "beyond": {
+      "eyebrow": "Más allá del código",
+      "title": "Cuando no estoy en VS Code"
+    }
   }
 }

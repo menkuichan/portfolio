@@ -54,6 +54,23 @@ export function Hero() {
               {t("ctaSecondary")} →
             </Link>
           </div>
+
+          {/* Scroll indicator */}
+          <div className="mt-20 flex flex-col items-center gap-2" aria-hidden="true">
+            <span className="font-hand text-ink-muted text-base">{t("scrollHint")}</span>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-ink-muted h-5 w-5 animate-bounce"
+            >
+              <path d="M12 5 V 19" />
+              <path d="M5 12 L 12 19 L 19 12" />
+            </svg>
+          </div>
         </div>
       </Container>
     </Section>

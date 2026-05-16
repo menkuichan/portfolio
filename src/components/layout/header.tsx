@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import { Star } from "@/components/illustrations";
 import { Container } from "@/components/ui";
 import { navItems } from "@/config/nav";
 import { siteConfig } from "@/config/site";
@@ -21,12 +22,13 @@ export function Header() {
         {/* Brand */}
         <Link
           href="/"
-          className="font-display text-ink hover:text-peach-500 text-xl tracking-tight transition-colors"
+          className="group font-display text-ink hover:text-peach-500 inline-flex items-center gap-1.5 text-xl tracking-tight transition-colors"
         >
           {siteConfig.shortName}
-          <span className="text-peach-500" aria-hidden="true">
-            .
-          </span>
+          <Star
+            className="text-peach-500 h-3 w-3 transition-transform group-hover:scale-110 group-hover:rotate-12"
+            aria-hidden="true"
+          />
         </Link>
 
         {/* Primary nav — hidden on small screens, full mobile menu comes in Phase 2 */}

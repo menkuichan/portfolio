@@ -1,8 +1,12 @@
+export { AboutHero } from "./about-hero";
 export { AboutSnippet } from "./about-snippet";
+export { BeyondCode } from "./beyond-code";
 export { CTABanner } from "./cta-banner";
 export { Hero } from "./hero";
+export { Journey } from "./journey";
 export { ProcessSteps } from "./process-steps";
 export { ServiceCard, type ServiceCardProps } from "./service-card";
 export { ServicesGrid } from "./services-grid";
 export { ServicesPreview } from "./services-preview";
 export { TechStack } from "./tech-stack";
+export { Values } from "./values";

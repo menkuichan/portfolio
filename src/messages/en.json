@@ -16,7 +16,8 @@
     "headline": "I build Shopify storefronts that don't feel like Shopify.",
     "subhead": "Custom Liquid themes and Hydrogen headless storefronts for DTC brands. 6+ years in production, working solo and end-to-end.",
     "ctaPrimary": "Book a call",
-    "ctaSecondary": "Read the blog"
+    "ctaSecondary": "Read the blog",
+    "scrollHint": "keep scrolling"
   },
   "Footer": {
     "tagline": "Built with care in Next.js, TypeScript and Tailwind.",
@@ -135,5 +136,98 @@
     "subtitle": "I'm taking on a small number of new engagements — custom theme builds, headless migrations, and ongoing development partnerships.",
     "ctaPrimary": "Book an intro call",
     "ctaSecondary": "Email me"
+  },
+  "Contact": {
+    "page": {
+      "metaTitle": "Contact",
+      "eyebrow": "Get in touch",
+      "title": "Let's talk about your Shopify project",
+      "subhead": "Book a 30-minute intro call below, or drop me an email. I usually reply within one business day."
+    },
+    "scheduleHeading": "Pick a time",
+    "scheduleHint": "Tap a slot to book a 30-min intro call. The form below collects what we'll discuss.",
+    "loadingCalendar": "Loading the calendar...",
+    "otherWays": {
+      "heading": "Other ways to reach me",
+      "email": "Email",
+      "emailValue": "{email}",
+      "linkedin": "LinkedIn",
+      "linkedinValue": "Connect on LinkedIn",
+      "github": "GitHub",
+      "githubValue": "See my code",
+      "responseTime": "Usually replies within 24 hours on weekdays."
+    }
+  },
+  "About": {
+    "page": {
+      "metaTitle": "About",
+      "eyebrow": "About me",
+      "title": "From frontend to Shopify obsession",
+      "subhead": "Six years of production, fifteen shipped projects, one growing focus on commerce."
+    },
+    "intro": {
+      "p1": "I'm Ilona — a frontend developer with a Computer Software Engineering degree and 6+ years writing React in production. For the last year I've been deep in Shopify, working across both ends of the stack: classic Liquid theme work and modern Hydrogen headless storefronts.",
+      "p2": "Before Shopify, I built things for fund managers, healthcare analysts, a fintech patent platform, an OKR system, a subscription-management tool, and a half-dozen other apps across fintech, healthcare, and SaaS. Charts, complex state, multi-step forms — that's home turf.",
+      "p3": "What changed: commerce is where engineering meets a real business problem most days. Subscriptions, configurators, on-the-fly variants, headless migrations — that work compounds. Today I take on Shopify projects directly with founders, ship them end-to-end, and stick around for support."
+    },
+    "downloadCv": "Download CV (PDF)",
+    "journey": {
+      "eyebrow": "Journey",
+      "title": "Six years, condensed",
+      "steps": {
+        "start": {
+          "year": "2019",
+          "title": "First production React",
+          "description": "Streaming service library visualization, full-stack with Node.js + MongoDB. NASA Space Apps Challenge participant the same year."
+        },
+        "midweb": {
+          "year": "2020–2022",
+          "title": "Dashboards, charts, complex state",
+          "description": "OKR management app, UI Kit documentation, bookkeeping for SMEs, fund-managers portal. Redux Saga, Material UI, Highcharts, lots of typed data."
+        },
+        "fintech": {
+          "year": "2022–2023",
+          "title": "Fintech, healthcare, blockchain",
+          "description": "Company patent app (React + blockchain). Healthcare analytics platform (Vue + Django). Public speaking, code review, technical mentorship."
+        },
+        "stripe": {
+          "year": "2023–2024",
+          "title": "Subscriptions & e-commerce roots",
+          "description": "Subscription management scripts on Stripe API. Membership platform with Stripe + Builder.io + Mixpanel. Started feeling the commerce gravity."
+        },
+        "shopify": {
+          "year": "2024–now",
+          "title": "Shopify specialist",
+          "description": "Full Hydrogen + Remix headless rebuild for a sports DTC brand. Live Liquid theme work. App stack design with Sika, Klaviyo, Recharge. Direct-to-founder freelance only."
+        }
+      }
+    },
+    "values": {
+      "eyebrow": "How I work",
+      "title": "Four things I won't compromise on",
+      "items": {
+        "direct": {
+          "title": "Direct, no middle layer",
+          "description": "You talk to me, I write the code. No account manager, no PM, no telephone-game between idea and implementation."
+        },
+        "smallChunks": {
+          "title": "Ship in small chunks",
+          "description": "Every few days you see progress on a staging URL. Feedback loops are tight, course-corrections cheap. No big surprise reveals."
+        },
+        "plainEnglish": {
+          "title": "Plain English, no jargon",
+          "description": "I explain trade-offs without hiding behind technical vocabulary. You should always know what you're paying for and why."
+        },
+        "ownership": {
+          "title": "End-to-end ownership",
+          "description": "I scope, build, ship, and support. Thirty days of post-launch fixes are always included — and an optional retainer if you want me around."
+        }
+      }
+    },
+    "beyond": {
+      "eyebrow": "Beyond code",
+      "title": "When I'm not in VS Code",
+      "body": "I read a lot of design systems, watch DTC brands evolve, and quietly judge bad checkout UX. I speak Russian and English daily, and I'm picking up Spanish & Portuguese — slowly enough that translating my own portfolio felt like a reasonable side project."
+    }
   }
 }

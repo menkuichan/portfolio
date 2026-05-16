@@ -2,6 +2,7 @@
 export { Arrow } from "./arrow";
 export { Bracket } from "./bracket";
 export { Dots } from "./dots";
+export { PortraitPlaceholder } from "./portrait-placeholder";
 export { Squiggle } from "./squiggle";
 export { Star } from "./star";
 export { Underline } from "./underline";

@@ -16,7 +16,8 @@
     "headline": "Construo lojas Shopify que não parecem Shopify.",
     "subhead": "Temas Liquid personalizados e lojas headless em Hydrogen para marcas DTC. Mais de 6 anos em produção, trabalhando sozinha do início ao fim.",
     "ctaPrimary": "Agendar uma conversa",
-    "ctaSecondary": "Ler o blog"
+    "ctaSecondary": "Ler o blog",
+    "scrollHint": "continue rolando"
   },
   "Footer": {
     "tagline": "Feito com cuidado em Next.js, TypeScript e Tailwind.",
@@ -74,5 +75,46 @@
     "subtitle": "Aceito um número limitado de novos projetos — temas personalizados, migrações headless e parcerias de desenvolvimento contínuas.",
     "ctaPrimary": "Agendar uma conversa",
     "ctaSecondary": "Enviar email"
+  },
+  "Contact": {
+    "page": {
+      "metaTitle": "Contato",
+      "eyebrow": "Contato",
+      "title": "Vamos falar sobre seu projeto Shopify",
+      "subhead": "Agende uma conversa de 30 minutos abaixo ou me envie um email. Costumo responder em um dia útil."
+    },
+    "scheduleHeading": "Escolha um horário",
+    "loadingCalendar": "Carregando o calendário...",
+    "otherWays": {
+      "heading": "Outras formas de contato",
+      "email": "Email",
+      "emailValue": "{email}",
+      "linkedin": "LinkedIn",
+      "linkedinValue": "Conectar no LinkedIn",
+      "github": "GitHub",
+      "githubValue": "Ver meu código",
+      "responseTime": "Costumo responder em 24 horas em dias úteis."
+    }
+  },
+  "About": {
+    "page": {
+      "metaTitle": "Sobre mim",
+      "eyebrow": "Sobre mim",
+      "title": "Do frontend à obsessão por Shopify",
+      "subhead": "Seis anos em produção, quinze projetos lançados, um foco crescente em e-commerce."
+    },
+    "downloadCv": "Baixar CV (PDF)",
+    "journey": {
+      "eyebrow": "Trajetória",
+      "title": "Seis anos, resumidos"
+    },
+    "values": {
+      "eyebrow": "Como trabalho",
+      "title": "Quatro coisas que não negocio"
+    },
+    "beyond": {
+      "eyebrow": "Além do código",
+      "title": "Quando não estou no VS Code"
+    }
   }
 }
