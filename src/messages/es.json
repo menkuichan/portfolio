@@ -30,5 +30,49 @@
     "title": "Página no encontrada",
     "description": "Esta página aún no existe — o se tomó el día libre.",
     "back": "Volver al inicio"
+  },
+  "Services": {
+    "eyebrow": "Qué hago",
+    "title": "Cuatro formas de ayudar a marcas Shopify",
+    "note": "cada proyecto es de principio a fin, sin sobrecarga de agencia",
+    "viewAll": "Ver todos los servicios →",
+    "page": {
+      "metaTitle": "Servicios",
+      "eyebrow": "Servicios",
+      "title": "Shopify, de principio a fin",
+      "subhead": "Desde temas Liquid personalizados hasta tiendas Hydrogen totalmente headless, diseño de stack de apps y optimización de rendimiento. Cada colaboración es directa — sin intermediarios."
+    }
+  },
+  "TechStack": {
+    "eyebrow": "Stack técnico",
+    "title": "Con qué construyo",
+    "note": "el conjunto de herramientas — elegidas, no acumuladas",
+    "categories": {
+      "shopify": "Shopify y e-commerce",
+      "frontend": "Frontend",
+      "backend": "Backend y datos",
+      "tools": "Herramientas y flujo"
+    },
+    "level": {
+      "expert": "experta",
+      "advanced": "avanzado",
+      "intermediate": "intermedio"
+    }
+  },
+  "AboutSnippet": {
+    "eyebrow": "Sobre mí",
+    "title": "Seis años construyendo. Un año en Shopify a fondo.",
+    "cta": "Leer historia completa →"
+  },
+  "Process": {
+    "eyebrow": "Cómo trabajo",
+    "title": "De la idea a la tienda en cuatro pasos"
+  },
+  "CTABanner": {
+    "eyebrow": "Trabajemos juntos",
+    "title": "¿Tienes un proyecto Shopify entre manos?",
+    "subtitle": "Acepto un número limitado de nuevos proyectos — temas personalizados, migraciones headless y colaboraciones de desarrollo continuas.",
+    "ctaPrimary": "Reservar una llamada",
+    "ctaSecondary": "Enviar email"
   }
 }

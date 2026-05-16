@@ -1,33 +1,32 @@
 /**
  * Per-request i18n config. Loads the messages bundle for the
- * resolved locale; falls back to the default if missing.
+ * resolved locale and DEEP-merges it on top of the default-locale
+ * bundle, so partial translations don't leave nested keys missing.
  *
- * Connected to next-intl via the `next-intl/plugin` in `next.config.ts`.
+ * Connected to next-intl via `next-intl/plugin` in next.config.ts.
  */
 
 import { hasLocale } from "next-intl";
 import { getRequestConfig } from "next-intl/server";
+import { deepMerge } from "@/lib/deep-merge";
 import { defaultLocale, type Locale } from "./config";
 import { routing } from "./routing";
+
+type Messages = Record<string, unknown>;
 
 export default getRequestConfig(async ({ requestLocale }) => {
   const requested = await requestLocale;
   const locale: Locale = hasLocale(routing.locales, requested) ? requested : defaultLocale;
 
-  // Soft fallback: if a translation file is missing or has missing keys,
-  // next-intl will fall through to the default locale automatically when
-  // we pass the default messages as a second-layer dictionary.
-  const [messages, fallback] = await Promise.all([
-    import(`@/messages/${locale}.json`).then((m) => m.default as Record<string, unknown>),
+  const [localeMessages, defaultMessages] = await Promise.all([
+    import(`@/messages/${locale}.json`).then((m) => m.default as Messages),
     locale === defaultLocale
       ? Promise.resolve(null)
-      : import(`@/messages/${defaultLocale}.json`).then(
-          (m) => m.default as Record<string, unknown>,
-        ),
+      : import(`@/messages/${defaultLocale}.json`).then((m) => m.default as Messages),
   ]);
 
   return {
     locale,
-    messages: fallback ? { ...fallback, ...messages } : messages,
+    messages: defaultMessages ? deepMerge(defaultMessages, localeMessages) : localeMessages,
   };
 });

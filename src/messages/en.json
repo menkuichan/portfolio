@@ -30,5 +30,110 @@
     "title": "Page not found",
     "description": "This page doesn't exist yet — or it took the day off.",
     "back": "Back to home"
+  },
+  "Services": {
+    "eyebrow": "What I do",
+    "title": "Four ways I help Shopify brands",
+    "note": "every project is end-to-end, no agency overhead",
+    "viewAll": "See full services →",
+    "page": {
+      "metaTitle": "Services",
+      "eyebrow": "Services",
+      "title": "Shopify, end-to-end",
+      "subhead": "From custom Liquid themes to fully headless Hydrogen storefronts, app stack design, and performance work. Every engagement is direct — founder to developer, no middle layer."
+    },
+    "items": {
+      "liquid": {
+        "title": "Custom Liquid Themes",
+        "description": "Bespoke Shopify storefronts built from scratch — or rebuilt out of generic templates — on Online Store 2.0. Sections, blocks, metaobjects, custom product templates, complex discount logic.",
+        "features": [
+          "Online Store 2.0 architecture",
+          "Custom sections, blocks, metaobjects",
+          "Advanced discount & pricing logic",
+          "B2B and wholesale flows"
+        ]
+      },
+      "hydrogen": {
+        "title": "Headless with Hydrogen",
+        "description": "Full headless storefronts on Shopify Hydrogen + Remix — for brands that have outgrown Liquid. Faster pages, richer UX, full design freedom via the Storefront API.",
+        "features": [
+          "Hydrogen + Remix + TypeScript",
+          "Storefront API & GraphQL integration",
+          "Multi-region & multi-language",
+          "Custom configurators, on-the-fly variants"
+        ]
+      },
+      "apps": {
+        "title": "App Stack & Integrations",
+        "description": "Picking and wiring the right Shopify apps for the job — Sika, Klaviyo, Recharge, Stripe, Builder.io, Mixpanel — instead of bloating the store with apps the brand doesn't need.",
+        "features": [
+          "App selection & architecture",
+          "Subscription flows (Recharge / Stripe)",
+          "Email & analytics stack (Klaviyo, Mixpanel)",
+          "Headless CMS (Builder.io, Sanity)"
+        ]
+      },
+      "performance": {
+        "title": "Performance & Migrations",
+        "description": "Fixing slow themes, migrating from Liquid to Hydrogen, optimizing Core Web Vitals, and bringing storefronts back into the green on Lighthouse.",
+        "features": [
+          "Core Web Vitals optimization",
+          "Bundle, image & font budgets",
+          "Liquid → Hydrogen migrations",
+          "Lighthouse 90+ delivery"
+        ]
+      }
+    }
+  },
+  "TechStack": {
+    "eyebrow": "Tech stack",
+    "title": "What I build with",
+    "note": "the toolbelt — picked, not collected",
+    "categories": {
+      "shopify": "Shopify & E-commerce",
+      "frontend": "Frontend",
+      "backend": "Backend & Data",
+      "tools": "Tooling & Workflow"
+    },
+    "level": {
+      "expert": "expert",
+      "advanced": "advanced",
+      "intermediate": "intermediate"
+    }
+  },
+  "AboutSnippet": {
+    "eyebrow": "About",
+    "title": "Six years of building. One year deep on Shopify.",
+    "body": "I'm a frontend developer with 6+ years of production experience across e-commerce, fintech, healthcare and SaaS. For the past year I've gone deep on Shopify — both classic Liquid and modern Hydrogen — and it's become my main craft. I work solo and end-to-end: from the first founder call to the live storefront.",
+    "cta": "Read full story →"
+  },
+  "Process": {
+    "eyebrow": "How I work",
+    "title": "From idea to live storefront in four steps",
+    "steps": {
+      "discovery": {
+        "title": "Discovery call",
+        "description": "We jump on a 30-minute call. You tell me the goal, the timeline, and the constraints. I tell you what's realistic and where I see risks."
+      },
+      "scope": {
+        "title": "Scope & estimate",
+        "description": "I write a focused scope doc with milestones, deliverables, and a fixed-price or hourly estimate. No fluff, no surprises."
+      },
+      "build": {
+        "title": "Build in the open",
+        "description": "I ship in small, demoable chunks on a staging URL. You see progress every few days. Tight feedback loop, no telephone game."
+      },
+      "ship": {
+        "title": "Ship & support",
+        "description": "Launch day plan, a healthy QA pass, and 30 days of post-launch support included. After that, an optional retainer if you want me around."
+      }
+    }
+  },
+  "CTABanner": {
+    "eyebrow": "Let's work together",
+    "title": "Got a Shopify project on your hands?",
+    "subtitle": "I'm taking on a small number of new engagements — custom theme builds, headless migrations, and ongoing development partnerships.",
+    "ctaPrimary": "Book an intro call",
+    "ctaSecondary": "Email me"
   }
 }

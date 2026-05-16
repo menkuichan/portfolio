@@ -1,12 +1,11 @@
 import { setRequestLocale } from "next-intl/server";
-import { Hero } from "@/components/sections";
+import { AboutSnippet, CTABanner, Hero, ServicesPreview, TechStack } from "@/components/sections";
 
 /**
- * Home page — assembles top-level sections.
+ * Home page — composed from independent section components.
  *
- * Phase 1 only ships <Hero />. Phase 2 will add Services preview,
- * Tech stack, Featured posts, About snippet, CTA banner — they all
- * slot in as siblings here.
+ * Each section owns its layout, copy, and visual rhythm. Adding,
+ * removing, or reordering sections is a one-line change here.
  */
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -15,13 +14,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <>
       <Hero />
-      {/* TODO Phase 2:
-        <ServicesPreview />
-        <TechStack />
-        <FeaturedPosts />
-        <AboutSnippet />
-        <CTABanner />
-      */}
+      <ServicesPreview />
+      <TechStack />
+      <AboutSnippet />
+      <CTABanner />
     </>
   );
 }
