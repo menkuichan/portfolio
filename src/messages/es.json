@@ -1,0 +1,29 @@
+{
+  "Meta": {
+    "siteName": "Ilona Hakalo",
+    "title": "Ilona Hakalo — Desarrolladora Shopify",
+    "description": "Desarrolladora frontend que crea tiendas Shopify personalizadas con Liquid y Hydrogen. Más de 6 años de experiencia con React, TypeScript y commerce headless."
+  },
+  "Nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "blog": "Blog",
+    "about": "Sobre mí",
+    "contact": "Contacto"
+  },
+  "Hero": {
+    "greeting": "Hola, soy Ilona —",
+    "headline": "Construyo tiendas Shopify que no parecen Shopify.",
+    "subhead": "Temas Liquid personalizados y tiendas headless en Hydrogen para marcas DTC. Más de 6 años en producción, trabajando sola de principio a fin.",
+    "ctaPrimary": "Reservar una llamada",
+    "ctaSecondary": "Leer el blog"
+  },
+  "Footer": {
+    "tagline": "Hecho con cuidado en Next.js, TypeScript y Tailwind.",
+    "copyright": "© {year} Ilona Hakalo. Todos los derechos reservados."
+  },
+  "LangSwitcher": {
+    "label": "Idioma",
+    "switchTo": "Cambiar idioma"
+  }
+}

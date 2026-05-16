@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Design tokens
+   ------------------------------------------------------------
+   All colors / fonts / radii / shadows live here as CSS vars.
+   Components use semantic tokens (bg-surface, text-ink) so the
+   visual identity can be tuned in one place.
+   ============================================================ */
+
+@theme {
+  /* ---------- Colors: raw palette ---------- */
+  --color-cream-50: #fdfbf7;
+  --color-cream-100: #f5f0e5;
+  --color-cream-200: #e8e1d3;
+  --color-cream-300: #d4c9b3;
+
+  --color-ink-900: #1e1a17;
+  --color-ink-700: #3a3328;
+  --color-ink-500: #6b635a;
+  --color-ink-300: #a89b8a;
+
+  --color-peach-100: #ffe4d7;
+  --color-peach-300: #ffb89e;
+  --color-peach-500: #f08a66;
+
+  --color-mint-100: #d6f0e3;
+  --color-mint-300: #9dddc4;
+  --color-mint-500: #5ab896;
+
+  --color-lavender-100: #e6dcf7;
+  --color-lavender-300: #c3b1e8;
+  --color-lavender-500: #8e74c8;
+
+  --color-sun-100: #fff3c4;
+  --color-sun-300: #ffe08a;
+  --color-sun-500: #e0b94a;
+
+  /* ---------- Colors: semantic aliases ---------- */
+  --color-bg: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-border-default: var(--color-cream-200);
+
+  --color-ink: var(--color-ink-900);
+  --color-ink-muted: var(--color-ink-500);
+
+  --color-accent: var(--color-peach-300);
+  --color-accent-strong: var(--color-peach-500);
+
+  /* ---------- Fonts (CSS vars set by next/font in layout.tsx) ---------- */
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-hand: var(--font-caveat), "Brush Script MT", cursive;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", monospace;
+
+  /* ---------- Radii ---------- */
+  --radius-card: 1.25rem; /* rounded-[1.25rem] aka 20px */
+  --radius-pill: 9999px;
+
+  /* ---------- Shadows (soft, doodle-friendly) ---------- */
+  --shadow-soft: 0 2px 8px rgba(30, 26, 23, 0.06);
+  --shadow-card: 0 8px 24px rgba(30, 26, 23, 0.08);
+  --shadow-hover: 0 12px 32px rgba(30, 26, 23, 0.12);
+
+  /* ---------- Container widths ---------- */
+  --container-prose: 65ch;
+  --container-content: 72rem; /* 1152px — main content max-width */
+
+  /* ---------- Animation easings ---------- */
+  --ease-doodle: cubic-bezier(0.34, 1.56, 0.64, 1); /* gentle spring */
+}
+
+/* ============================================================
+   Dark mode opt-in (toggle via .dark class on <html>)
+   Disabled by default for MVP; tokens are ready when needed.
+   ============================================================ */
+
+@layer base {
+  .dark {
+    --color-bg: #1a1714;
+    --color-surface: #252119;
+    --color-border-default: #3a3328;
+    --color-ink: #f5efe3;
+    --color-ink-muted: #a89b8a;
+  }
+}
+
+/* ============================================================
+   Base styles
+   ============================================================ */
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11"; /* nicer Inter alternates */
+  }
+
+  /* Focus ring — doodle-friendly, accessible */
+  :focus-visible {
+    outline: 2px solid var(--color-accent-strong);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Respect prefers-reduced-motion globally */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Selection — peachy */
+  ::selection {
+    background-color: var(--color-peach-100);
+    color: var(--color-ink);
+  }
+}

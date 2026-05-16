@@ -1,0 +1,29 @@
+{
+  "Meta": {
+    "siteName": "Илона Хакало",
+    "title": "Илона Хакало — Shopify-разработчик",
+    "description": "Фронтенд-разработчик. Строю кастомные Shopify-витрины на Liquid и Hydrogen. 6+ лет в продакшене, React, TypeScript, headless-коммерция."
+  },
+  "Nav": {
+    "home": "Главная",
+    "services": "Услуги",
+    "blog": "Блог",
+    "about": "Обо мне",
+    "contact": "Контакты"
+  },
+  "Hero": {
+    "greeting": "Привет, я Илона —",
+    "headline": "Делаю Shopify-магазины, которые не выглядят как Shopify.",
+    "subhead": "Кастомные Liquid-темы и headless-витрины на Hydrogen для DTC-брендов. 6+ лет в продакшене, работаю самостоятельно от идеи до запуска.",
+    "ctaPrimary": "Записаться на звонок",
+    "ctaSecondary": "Читать блог"
+  },
+  "Footer": {
+    "tagline": "Сделано с любовью на Next.js, TypeScript и Tailwind.",
+    "copyright": "© {year} Илона Хакало. Все права защищены."
+  },
+  "LangSwitcher": {
+    "label": "Язык",
+    "switchTo": "Сменить язык"
+  }
+}

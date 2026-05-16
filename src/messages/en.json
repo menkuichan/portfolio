@@ -1,0 +1,29 @@
+{
+  "Meta": {
+    "siteName": "Ilona Hakalo",
+    "title": "Ilona Hakalo — Shopify Developer",
+    "description": "Frontend developer building custom Shopify storefronts on Liquid and Hydrogen. 6+ years of production experience with React, TypeScript and headless commerce."
+  },
+  "Nav": {
+    "home": "Home",
+    "services": "Services",
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "Hero": {
+    "greeting": "Hi, I'm Ilona —",
+    "headline": "I build Shopify storefronts that don't feel like Shopify.",
+    "subhead": "Custom Liquid themes and Hydrogen headless storefronts for DTC brands. 6+ years in production, working solo and end-to-end.",
+    "ctaPrimary": "Book a call",
+    "ctaSecondary": "Read the blog"
+  },
+  "Footer": {
+    "tagline": "Built with care in Next.js, TypeScript and Tailwind.",
+    "copyright": "© {year} Ilona Hakalo. All rights reserved."
+  },
+  "LangSwitcher": {
+    "label": "Language",
+    "switchTo": "Switch language"
+  }
+}
