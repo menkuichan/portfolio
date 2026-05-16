@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
-import { Bracket, Dots, PortraitPlaceholder, Star } from "@/components/illustrations";
+import Image from "next/image";
+import { Bracket, Dots, Star } from "@/components/illustrations";
 import { buttonVariants, Container, Eyebrow, Section } from "@/components/ui";
 import { siteConfig } from "@/config/site";
 
@@ -37,7 +38,14 @@ export function AboutHero() {
             <Star className="text-peach-300 absolute -top-3 -right-3 h-6 w-6" />
 
             <div className="border-cream-200 bg-cream-100 shadow-card relative aspect-[4/5] overflow-hidden rounded-(--radius-card) border-2">
-              <PortraitPlaceholder />
+              <Image
+                src="/ilona.jpg"
+                alt="Ilona Hakalo"
+                fill
+                sizes="(max-width: 768px) 100vw, 400px"
+                className="object-cover"
+                priority
+              />
             </div>
 
             <Bracket className="text-lavender-300 absolute top-12 -right-8 h-24" side="right" />

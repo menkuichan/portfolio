@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
-import { Bracket, Dots, PortraitPlaceholder, Star } from "@/components/illustrations";
+import Image from "next/image";
+import { Bracket, Dots, Star } from "@/components/illustrations";
 import { Container, Eyebrow, Section } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
 
@@ -26,8 +27,14 @@ export function AboutSnippet() {
             <Star className="text-mint-300 absolute -top-2 -right-2 h-6 w-6" />
 
             <div className="border-cream-200 bg-cream-100 shadow-card relative aspect-[4/5] overflow-hidden rounded-(--radius-card) border-2">
-              {/* Stylized placeholder — swap for <Image src="/ilona.jpg" /> when photo lands */}
-              <PortraitPlaceholder />
+              <Image
+                src="/ilona.jpg"
+                alt="Ilona Hakalo"
+                fill
+                sizes="(max-width: 768px) 100vw, 400px"
+                className="object-cover"
+                priority={false}
+              />
             </div>
 
             <Bracket className="text-lavender-300 absolute top-12 -right-8 h-24" side="right" />
