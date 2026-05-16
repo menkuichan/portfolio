@@ -1,28 +1,29 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { usePathname as useNextPathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useTransition } from "react";
-import { locales, localeLabels, type Locale } from "@/i18n/config";
-import { useRouter } from "@/i18n/navigation";
+import { defaultLocale, locales, localeLabels, type Locale } from "@/i18n/config";
 import { cn } from "@/lib/cn";
 
 /**
- * LangSwitcher — switches locale while preserving the current path.
+ * LangSwitcher — switches locale via a full-page navigation.
  *
- * Strategy (canonical, no hacks):
- * - `usePathname()` from `next/navigation` returns the raw browser
- *   path (e.g. "/pt/about"). We strip the locale prefix ourselves so
- *   we know exactly what we're navigating to — no reliance on next-intl's
- *   `usePathname` quirks during client-side transitions.
- * - `useRouter()` from `@/i18n/navigation` is next-intl's router. We pass
- *   it the stripped path plus the target `{ locale }`. It handles:
- *     * applying the correct prefix for the target locale
- *     * writing the NEXT_LOCALE cookie (so refreshes remember the choice)
- *     * keeping App Router state in sync
+ * Why full reload (window.location), not router.replace:
  *
- * Locale detection from cookies is disabled in `routing.ts`, so this
- * switch is reliably one-way: URL → locale, period.
+ * Next.js App Router preserves the root layout across client-side
+ * navigations. Our root layout sets `<html lang>` and renders the
+ * NextIntlClientProvider with the messages for the active locale.
+ * If we use the client-side router for the locale switch, neither
+ * `<html lang>` nor the loaded messages update — only the URL changes.
+ * Result: visible content stays in the previous language even though
+ * the URL now says /es.
+ *
+ * A full-page navigation forces the server to render the new locale
+ * from scratch: correct lang attribute, correct messages, correct
+ * cookies, correct metadata. The "flash" of a full reload is the
+ * expected UX cost for switching languages — every major i18n site
+ * does the same.
  */
 
 function stripLocalePrefix(pathname: string): string {
@@ -35,10 +36,14 @@ function stripLocalePrefix(pathname: string): string {
   return pathname;
 }
 
+function buildTargetPath(cleanPath: string, targetLocale: Locale): string {
+  if (targetLocale === defaultLocale) return cleanPath;
+  return cleanPath === "/" ? `/${targetLocale}` : `/${targetLocale}${cleanPath}`;
+}
+
 export function LangSwitcher({ className }: { className?: string }) {
   const t = useTranslations("LangSwitcher");
-  const router = useRouter();
-  const rawPathname = useNextPathname();
+  const rawPathname = usePathname();
   const currentLocale = useLocale() as Locale;
   const [isPending, startTransition] = useTransition();
 
@@ -47,8 +52,13 @@ export function LangSwitcher({ className }: { className?: string }) {
     if (nextLocale === currentLocale) return;
 
     const cleanPath = stripLocalePrefix(rawPathname);
+    const target = buildTargetPath(cleanPath, nextLocale);
+
+    // `startTransition` shows the disabled state while the navigation
+    // is in flight. The actual navigation is a full reload so the root
+    // layout re-renders with the new locale.
     startTransition(() => {
-      router.replace(cleanPath, { locale: nextLocale });
+      window.location.assign(target);
     });
   }
 
