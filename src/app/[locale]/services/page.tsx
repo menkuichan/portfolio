@@ -3,6 +3,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Star, Underline } from "@/components/illustrations";
 import { CTABanner, ProcessSteps, ServicesGrid } from "@/components/sections";
 import { Container, Eyebrow, Section } from "@/components/ui";
+import type { Locale } from "@/i18n/config";
+import { buildAlternates } from "@/lib/seo";
 
 /**
  * Services page — full breakdown of what I offer.
@@ -19,7 +21,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Services.page" });
-  return { title: t("metaTitle") };
+  return {
+    title: t("metaTitle"),
+    alternates: buildAlternates(locale as Locale, "/services"),
+  };
 }
 
 export default async function ServicesPage({ params }: { params: Promise<{ locale: string }> }) {

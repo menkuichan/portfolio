@@ -4,6 +4,8 @@ import { CalendlyInline } from "@/components/calendly";
 import { Star, Underline } from "@/components/illustrations";
 import { Container, Eyebrow, Section } from "@/components/ui";
 import { siteConfig } from "@/config/site";
+import type { Locale } from "@/i18n/config";
+import { buildAlternates } from "@/lib/seo";
 
 /**
  * Contact page.
@@ -21,7 +23,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Contact.page" });
-  return { title: t("metaTitle") };
+  return {
+    title: t("metaTitle"),
+    alternates: buildAlternates(locale as Locale, "/contact"),
+  };
 }
 
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {

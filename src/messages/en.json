@@ -137,6 +137,29 @@
     "ctaPrimary": "Book an intro call",
     "ctaSecondary": "Email me"
   },
+  "Blog": {
+    "page": {
+      "metaTitle": "Blog",
+      "eyebrow": "Notes & solutions",
+      "title": "Working notes from the Shopify trenches",
+      "subhead": "Liquid tricks, Hydrogen gotchas, app-stack opinions, and the occasional teardown. Written for the developer I was three years ago."
+    },
+    "card": {
+      "readMore": "Read more →"
+    },
+    "post": {
+      "minRead": "{minutes, plural, =1 {1 min read} other {# min read}}",
+      "publishedOn": "Published {date}",
+      "backToList": "← All notes",
+      "fallbackNotice": "Not translated yet — showing the English version.",
+      "next": "Next post",
+      "prev": "Previous post"
+    },
+    "empty": {
+      "title": "Nothing here yet",
+      "description": "First post is on its way. Subscribe to my LinkedIn for the heads-up."
+    }
+  },
   "Contact": {
     "page": {
       "metaTitle": "Contact",

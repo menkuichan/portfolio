@@ -9,8 +9,9 @@ import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { locales } from "@/i18n/config";
+import { locales, type Locale } from "@/i18n/config";
 import { routing } from "@/i18n/routing";
+import { buildAlternates } from "@/lib/seo";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -31,6 +32,7 @@ export async function generateMetadata({
       template: `%s · ${t("siteName")}`,
     },
     description: t("description"),
+    alternates: buildAlternates(locale as Locale, "/"),
   };
 }
 

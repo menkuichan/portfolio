@@ -1,0 +1,150 @@
+---
+title: "Liquid vs Hydrogen: when to migrate, and when to stay put"
+description: "After a year of doing both — classic Liquid theming and a full Hydrogen rebuild — here's the framework I use to decide which stack a brand actually needs."
+date: "2026-04-22"
+tags: ["shopify", "hydrogen", "liquid", "headless"]
+---
+
+There's a fashionable answer to "Liquid or Hydrogen?" and a correct one.
+The fashionable answer is _always Hydrogen, headless is the future_.
+The correct answer is _it depends, and usually you're not ready yet_.
+
+I've shipped both this year — a generic Liquid template rebuilt as a
+fully custom Hydrogen storefront for a sports DTC brand, and ongoing
+Liquid work for another shop that runs lean. The honest framework I use
+below comes from watching where each stack hurts and where each shines.
+
+## The short answer
+
+Stay on Liquid if **any** of these are true:
+
+- Your storefront is mostly product pages + a few content pages
+- You don't need custom checkout, custom variant generation, or unusual flows
+- Your team is small and not React-native
+- You're under $500k/year and need to ship features in days, not weeks
+
+Migrate to Hydrogen when **all** of these are true:
+
+- You've outgrown what Online Store 2.0 sections can express
+- You need custom UX flows that aren't on Shopify's roadmap
+- You can afford 6–12 weeks of build time before recouping ROI
+- The brand will benefit from being _measurably_ faster and more bespoke
+
+If you're somewhere in the middle, **stay on Liquid and optimize
+ruthlessly**. Most "we need to go headless" conversations are really
+"our current theme is built badly".
+
+## What Liquid is great at
+
+Liquid gets a bad rap from people who haven't shipped Online Store 2.0
+themes recently. The capabilities have grown a lot since the early days:
+
+- **Sections + blocks**: arbitrary page composition without leaving the theme editor.
+- **Metaobjects**: typed content models that act like a CMS inside Shopify.
+- **Custom product templates**: per-product layouts without forking the theme.
+- **Pixel-perfect performance**: when a Liquid theme is built right, it's hard to beat. Native edge caching, no React hydration cost, no client-side router.
+
+Here's a quick read on Liquid's strengths:
+
+```liquid
+{% comment %} Online Store 2.0 section — fully merchant-editable {% endcomment %}
+{% schema %}
+{
+  "name": "Featured Bundle",
+  "settings": [
+    { "type": "product", "id": "main_product", "label": "Main product" }
+  ],
+  "blocks": [
+    { "type": "addon", "name": "Add-on", "settings": [
+      { "type": "product", "id": "product", "label": "Add-on product" }
+    ]}
+  ]
+}
+{% endschema %}
+```
+
+That whole block is configurable by the merchant in the theme editor —
+no developer needed for changes. That's powerful and often
+underestimated.
+
+## What Hydrogen is great at
+
+Hydrogen earns its complexity when you need:
+
+- **Custom configurators** with dynamic variant generation
+- **Multi-region** storefronts with complex localization beyond what
+  Shopify Markets gives you out of the box
+- **Composable architecture** — CMS, search, reviews, loyalty all
+  swappable independently
+- **Brand-true UX** that templates can't express (think: configurators,
+  story-driven product pages, custom checkout extensions)
+
+On the project I rebuilt this year, the trigger was a custom hockey
+stick configurator. Customers picked flex, curve, length, finish, etc.,
+and we generated a unique variant on the fly with dynamic pricing
+calculated via the Storefront API. That's not a Liquid problem.
+
+```ts
+// Hydrogen route loader — fetch variants on the fly via Storefront API
+import { json } from "@shopify/remix-oxygen";
+
+export async function loader({ params, context }: LoaderArgs) {
+  const { storefront } = context;
+  const { product } = await storefront.query(PRODUCT_QUERY, {
+    variables: { handle: params.handle },
+    cache: storefront.CacheLong(),
+  });
+
+  return json({ product });
+}
+```
+
+Clean, typed, cacheable at the edge — and the rest of the codebase is
+just React, so designers and PMs can read it.
+
+## The migration trap
+
+Most "Liquid → Hydrogen" projects fail not because Hydrogen is bad, but
+because the brand wasn't ready for the operational shift:
+
+1. **Theme editor goes away.** No more "the marketing team tweaks copy
+   in admin". Now everything routes through your dev pipeline (or a
+   headless CMS like Sanity or Builder.io).
+2. **Hosting becomes a separate concern.** Vercel or Shopify Oxygen
+   instead of "Shopify hosts it for free".
+3. **The 'good enough' bar moves up.** Once you've gone bespoke, every
+   page suddenly looks like it has room for improvement. Scope creeps.
+
+If you're not ready to absorb those, **stay on Liquid** and bring in a
+developer who can squeeze Online Store 2.0 hard.
+
+## The decision shortcut I use
+
+I literally ask three questions on intro calls now:
+
+1. **"Show me one feature your current theme can't do that you need."**
+   If they can't name one, they don't need Hydrogen.
+2. **"Who edits content today, and how often?"** If marketing edits
+   content weekly, headless adds friction unless we build a CMS pipeline
+   alongside it.
+3. **"What's your conversion rate today, and where do you think
+   performance is hurting it?"** If they don't have data, they need a
+   Lighthouse audit before they need a rebuild.
+
+Skip the framework, listen for the actual constraint, and recommend the
+boring answer first. Headless is a tool — not a status symbol.
+
+## TL;DR
+
+If you're a DTC brand under $500k/year, on a standard Shopify plan,
+shipping mostly product + content pages — **stay on Liquid and optimize
+the theme you have**. The ROI is faster, the risk is lower, and the
+ceiling is higher than most developers will tell you.
+
+If you're past that, with a real custom-UX problem that Liquid can't
+express, with a team ready to absorb a headless workflow — **Hydrogen
+is genuinely the best frontend story in commerce right now**, and it's
+worth the 6–12 week build.
+
+The wrong choice is picking either based on which sounds more impressive
+on a landing page.

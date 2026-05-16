@@ -76,6 +76,29 @@
     "ctaPrimary": "Agendar uma conversa",
     "ctaSecondary": "Enviar email"
   },
+  "Blog": {
+    "page": {
+      "metaTitle": "Blog",
+      "eyebrow": "Notas e soluções",
+      "title": "Notas das trincheiras do Shopify",
+      "subhead": "Truques de Liquid, pegadinhas do Hydrogen, opiniões sobre o stack de apps e algum desmonte ocasional."
+    },
+    "card": {
+      "readMore": "Ler mais →"
+    },
+    "post": {
+      "minRead": "{minutes, plural, one {# min} other {# min}} de leitura",
+      "publishedOn": "Publicado em {date}",
+      "backToList": "← Todas as notas",
+      "fallbackNotice": "Ainda não traduzido — mostrando a versão em inglês.",
+      "next": "Próximo",
+      "prev": "Anterior"
+    },
+    "empty": {
+      "title": "Ainda não há nada",
+      "description": "Primeiro post a caminho. Siga-me no LinkedIn para não perder."
+    }
+  },
   "Contact": {
     "page": {
       "metaTitle": "Contato",

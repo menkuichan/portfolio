@@ -8,6 +8,9 @@ import {
   TechStack,
   Values,
 } from "@/components/sections";
+import { JsonLd, personSchema } from "@/components/seo";
+import type { Locale } from "@/i18n/config";
+import { buildAlternates } from "@/lib/seo";
 
 /**
  * About page — full story.
@@ -26,7 +29,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "About.page" });
-  return { title: t("metaTitle") };
+  return {
+    title: t("metaTitle"),
+    alternates: buildAlternates(locale as Locale, "/about"),
+  };
 }
 
 export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -35,6 +41,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   return (
     <>
+      <JsonLd data={personSchema()} />
       <AboutHero />
       <Journey />
       <Values />

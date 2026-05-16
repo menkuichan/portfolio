@@ -10,10 +10,13 @@
  * `[locale]/layout.tsx`.
  */
 
+import type { Metadata, Viewport } from "next";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getLocale } from "next-intl/server";
 import { Caveat, Fraunces, Geist_Mono, Inter } from "next/font/google";
 import { Footer, Header } from "@/components/layout";
+import { JsonLd, websiteSchema } from "@/components/seo";
+import { siteConfig } from "@/config/site";
 import { defaultLocale, htmlLang, locales, type Locale } from "@/i18n/config";
 import "./globals.css";
 
@@ -44,6 +47,40 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+// ---------- Site-wide metadata + viewport ----------
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  formatDetection: { telephone: false, email: false, address: false },
+  openGraph: {
+    siteName: siteConfig.name,
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: "@ilonahakalo",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#FDFBF7",
+  colorScheme: "light",
+};
+
 // ---------- Layout ----------
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
@@ -56,6 +93,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       className={`${fraunces.variable} ${inter.variable} ${caveat.variable} ${geistMono.variable} h-full`}
     >
       <body className="flex min-h-full flex-col">
+        <JsonLd data={websiteSchema()} />
         <NextIntlClientProvider>
           <Header />
           {children}

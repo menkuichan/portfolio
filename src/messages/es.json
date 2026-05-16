@@ -76,6 +76,29 @@
     "ctaPrimary": "Reservar una llamada",
     "ctaSecondary": "Enviar email"
   },
+  "Blog": {
+    "page": {
+      "metaTitle": "Blog",
+      "eyebrow": "Notas y soluciones",
+      "title": "Notas desde las trincheras de Shopify",
+      "subhead": "Trucos de Liquid, sorpresas de Hydrogen, opiniones sobre el stack de apps y algún desmontaje ocasional."
+    },
+    "card": {
+      "readMore": "Leer más →"
+    },
+    "post": {
+      "minRead": "{minutes, plural, one {# min} other {# min}} de lectura",
+      "publishedOn": "Publicado {date}",
+      "backToList": "← Todas las notas",
+      "fallbackNotice": "Sin traducir aún — mostrando la versión en inglés.",
+      "next": "Siguiente",
+      "prev": "Anterior"
+    },
+    "empty": {
+      "title": "Aún no hay nada",
+      "description": "Primer post en camino. Sígueme en LinkedIn para no perdértelo."
+    }
+  },
   "Contact": {
     "page": {
       "metaTitle": "Contacto",
