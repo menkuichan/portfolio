@@ -1,17 +1,41 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
 import { useTransition } from "react";
-import { locales, localeLabels, type Locale } from "@/i18n/config";
-import { usePathname, useRouter } from "@/i18n/navigation";
+import { defaultLocale, locales, localeLabels, type Locale } from "@/i18n/config";
 import { cn } from "@/lib/cn";
 
 /**
- * LangSwitcher — preserves the current path when switching locale.
+ * LangSwitcher — switches locale while preserving the current path.
  *
- * Renders a compact <select>. Replace with a popover-styled menu in
- * Phase 2 if a richer interaction is needed.
+ * Uses Next.js's native router and pathname (NOT next-intl's wrapped
+ * versions) to avoid edge-cases where next-intl's `as-needed` strategy
+ * occasionally returns a still-prefixed pathname during client-side
+ * transitions. We strip and re-attach the locale prefix manually here —
+ * one source of truth, one tested place.
  */
+
+function stripLocalePrefix(pathname: string): string {
+  for (const locale of locales) {
+    if (pathname === `/${locale}`) return "/";
+    if (pathname.startsWith(`/${locale}/`)) {
+      return pathname.slice(locale.length + 1);
+    }
+  }
+  return pathname;
+}
+
+function buildTargetPath(pathname: string, targetLocale: Locale): string {
+  const cleanPath = stripLocalePrefix(pathname);
+  if (targetLocale === defaultLocale) {
+    return cleanPath;
+  }
+  // For non-default locales, prefix the path. Treat "/" specially so we
+  // don't end up with "/ru/" (trailing slash).
+  return cleanPath === "/" ? `/${targetLocale}` : `/${targetLocale}${cleanPath}`;
+}
+
 export function LangSwitcher({ className }: { className?: string }) {
   const t = useTranslations("LangSwitcher");
   const router = useRouter();
@@ -21,8 +45,10 @@ export function LangSwitcher({ className }: { className?: string }) {
 
   function handleChange(event: React.ChangeEvent<HTMLSelectElement>) {
     const nextLocale = event.target.value as Locale;
+    if (nextLocale === currentLocale) return;
+    const target = buildTargetPath(pathname, nextLocale);
     startTransition(() => {
-      router.replace(pathname, { locale: nextLocale });
+      router.replace(target);
     });
   }
 
