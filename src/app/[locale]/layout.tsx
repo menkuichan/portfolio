@@ -1,47 +1,20 @@
+/**
+ * Locale layout — validates the [locale] segment, generates locale-aware
+ * metadata, and enables static rendering. All visual chrome (html, body,
+ * fonts, Header, Footer, IntlProvider) lives in the ROOT layout — this
+ * one just makes sure we're rendering a known locale.
+ */
+
 import type { Metadata } from "next";
-import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Caveat, Fraunces, Geist_Mono, Inter } from "next/font/google";
 import { notFound } from "next/navigation";
-import { Footer, Header } from "@/components/layout";
-import { htmlLang, locales } from "@/i18n/config";
+import { locales } from "@/i18n/config";
 import { routing } from "@/i18n/routing";
-import "../globals.css";
-
-// ---------- Fonts (loaded once at the locale layout) ----------
-
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  axes: ["SOFT", "WONK", "opsz"],
-  display: "swap",
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const caveat = Caveat({
-  variable: "--font-caveat",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-// ---------- Static params for SSG of every locale ----------
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
-
-// ---------- Locale-aware metadata ----------
 
 export async function generateMetadata({
   params,
@@ -61,8 +34,6 @@ export async function generateMetadata({
   };
 }
 
-// ---------- Layout ----------
-
 export default async function LocaleLayout({
   children,
   params,
@@ -72,7 +43,6 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  // Validate the locale segment; bail out to 404 otherwise.
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
@@ -80,18 +50,5 @@ export default async function LocaleLayout({
   // Enables static rendering for this locale.
   setRequestLocale(locale);
 
-  return (
-    <html
-      lang={htmlLang[locale]}
-      className={`${fraunces.variable} ${inter.variable} ${caveat.variable} ${geistMono.variable} h-full`}
-    >
-      <body className="flex min-h-full flex-col">
-        <NextIntlClientProvider>
-          <Header />
-          {children}
-          <Footer />
-        </NextIntlClientProvider>
-      </body>
-    </html>
-  );
+  return children;
 }

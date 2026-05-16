@@ -9,11 +9,11 @@ export const siteConfig = {
   name: "Ilona Hakalo",
   shortName: "Hakalo",
   url: "https://ilonahakalo.com", // TODO: confirm final domain
-  email: "ilona.salomenskaya@gmail.com",
-  calendlyUrl: "https://calendly.com/ilonahakalo/intro", // TODO: replace with real link
+  email: "ilona.hakalo@gmail.com",
+  calendlyUrl: "https://calendly.com/menkuichan/intro", // TODO: replace with real Calendly link
   socials: {
-    linkedin: "https://www.linkedin.com/in/ilonahakalo",
-    github: "https://github.com/ilonahakalo",
+    linkedin: "https://www.linkedin.com/in/menkuichan/",
+    github: "https://github.com/menkuichan",
   },
 } as const;
 

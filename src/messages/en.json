@@ -25,5 +25,10 @@
   "LangSwitcher": {
     "label": "Language",
     "switchTo": "Switch language"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "This page doesn't exist yet — or it took the day off.",
+    "back": "Back to home"
   }
 }
